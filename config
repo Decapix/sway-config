@@ -1,0 +1,102 @@
+# SwayWM global configuration. For detailed information type "man sway"
+# Author: Oscar Carballal Prego <oscar.carballal@protonmail.com>
+
+###############################################################################
+# TODO:
+#   + Sway:
+#      - Autoassign workspaces to certain applications
+#
+###############################################################################
+
+exec_always --no-startup-id dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+
+########################
+# Run services
+#########################
+exec mako
+#exec waybar
+
+#########################
+# Main definitions
+#########################
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Your preferred terminal emulator
+set $term kitty
+
+# Your preferred application launcher
+set $menu wofi --show run -Iib -l 5 -W 500 -x -10 -y -51
+#set $menu rofi -terminal kitty -theme ~/.config/sway/rofi/flat-orange.rasi -show run
+
+# Remove all borders from applications
+# default_border none
+
+# custom cursor
+
+# seat seat0 xcursor_theme Saturn 32
+
+# Stablish gaps between windows and from the screen edge
+# wallpaper
+bindsym $mod+Shift+w exec ~/.local/bin/change_wallpaper.sh && swaybg -i /home/solenopsis/Pictures/Wallpapers/actual.jpg -m fill
+
+#gaps inner 3
+#gaps outer 2
+
+#########################
+# Main keybindings
+#########################
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Start your launcher
+bindsym $mod+x exec $menu
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file. Be aware that some changes might need
+# a session logout (gaps, for example)
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+# control center
+bindsym $mod+c exec ~/.config/sway/scripts/control-center.sh
+
+exec_always --no-startup-id ~/.config/sway/scripts/battery_alert.sh &
+
+
+# Démarre xdg-desktop-portal
+#exec --no-startup-id /usr/lib/xdg-desktop-portal
+
+# Importe les variables d'environnement dans la session D-Bus
+#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Assurez-vous que XDG_CURRENT_DESKTOP est défini pour que le portal utilise le bon backend (wlr)
+# Dans de nombreuses distributions, cela est fait automatiquement par le script de démarrage de Sway, mais si non:
+# exec XDG_CURRENT_DESKTOP=sway
+#exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#exec_always systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#exec /usr/lib/xdg-desktop-portal-wlr
+#exec /usr/lib/xdg-desktop-portal
+
+# === Portails et D-Bus pour partage d’écran ===
+# exec_always {
+#     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#     systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#     /usr/libexec/xdg-desktop-portal-wlr &
+#     /usr/libexec/xdg-desktop-portal &
+# }
+
+include ~/.config/sway/config.d/*
+include ~/.config/sway/config.d/custom/*
+include /etc/sway/config.d/*
