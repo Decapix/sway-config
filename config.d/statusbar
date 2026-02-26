@@ -4,7 +4,7 @@
 # Waybar replaces the native sway bar for richer styling.
 # The old sway bar block is kept below (commented) as a fallback.
 
-exec_always --no-startup-id pkill waybar; waybar &
+exec_always --no-startup-id sh -c 'pkill waybar; sleep 0.3; waybar'
 
 # ── Old native sway bar (fallback) ──────────────────────────
 # bar {
