@@ -100,3 +100,23 @@ exec_always --no-startup-id ~/.config/sway/scripts/battery_alert.sh &
 include ~/.config/sway/config.d/*
 include ~/.config/sway/config.d/custom/*
 include /etc/sway/config.d/*
+
+#########################
+# Visual style
+#########################
+
+# Window borders: 2px, accent color on focus
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
+
+# class                  border              background          text                indicator           child_border
+client.focused           #0D1A63CC           #0D1A63CC           #ffffff             #0D1A63FF           #0D1A63CC
+client.focused_inactive  #0d1640AA           #0d1640AA           #aaaacc             #0d1640AA           #0d1640AA
+client.unfocused         #0d1640AA           #0d1640AA           #666688             #0d1640AA           #0d1640AA
+client.urgent            #c03c3cCC           #c03c3cCC           #ffffff             #c03c3cCC           #c03c3cCC
+
+# Title bar (tab/stack header): same blue accent, semi-transparent
+# font for title bar
+font pango:JetBrainsMono Nerd Font 10
+title_align center

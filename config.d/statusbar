@@ -1,19 +1,20 @@
 # SwayWM status bar configuration. For detailed information type "man sway-bar"
 # Author: Oscar Carballal Prego <oscar.carballal@protonmail.com>
 
-# The old sway bar configuration is kept for archiving purposes, it works
-# fine, so if you want, you can activate it and comment the 'waybar' line on
-# the main configuration.
+# Waybar replaces the native sway bar for richer styling.
+# The old sway bar block is kept below (commented) as a fallback.
 
-bar {
-    position top
-    status_command while ~/.config/sway/scripts/sway_bar.sh; do sleep 1; done
-    pango_markup enabled
-    font pango:JetBrainsMono Nerd Font 10
-    
-    colors {
-        statusline #ffffff
-        background #000000CC
-        inactive_workspace #323232AA #323232AA #5c5c5cAA
-    }
-}
+exec_always --no-startup-id pkill waybar; waybar &
+
+# ── Old native sway bar (fallback) ──────────────────────────
+# bar {
+#     position top
+#     status_command while ~/.config/sway/scripts/sway_bar.sh; do sleep 1; done
+#     pango_markup enabled
+#     font pango:JetBrainsMono Nerd Font 10
+#     colors {
+#         statusline #ffffff
+#         background #000000CC
+#         inactive_workspace #323232AA #323232AA #5c5c5cAA
+#     }
+# }
