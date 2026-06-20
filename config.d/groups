@@ -1,0 +1,18 @@
+# SwayWM window-group management.
+#
+# Grouping itself is native: split with $mod+b / $mod+v, then $mod+w to turn a
+# split into a tabbed group, and $mod+a to select the parent group. These
+# bindings add naming (via marks), a "flatten everything" panic button and a
+# visual cue for being inside a group.
+
+# Show container marks as [name] in the title bar (group naming).
+show_marks yes
+
+# Name / rename the focused group. Select the group first with $mod+a.
+bindsym $mod+Shift+m exec ~/.config/sway/scripts/rename_group.sh
+
+# Remove the name from the focused group.
+bindsym $mod+Mod1+m exec swaymsg unmark
+
+# Flatten the whole focused workspace into a single tabbed level ("I'm lost").
+bindsym $mod+Shift+w exec ~/.config/sway/scripts/flatten_workspace.sh

@@ -37,8 +37,8 @@ set $menu wofi --show run -Iib -l 5 -W 500 -x -10 -y -51
 # seat seat0 xcursor_theme Saturn 32
 
 # Stablish gaps between windows and from the screen edge
-# wallpaper
-bindsym $mod+Shift+w exec ~/.local/bin/change_wallpaper.sh && swaybg -i /home/solenopsis/Pictures/Wallpapers/actual.jpg -m fill
+# wallpaper (moved off $mod+Shift+w, which now flattens the workspace)
+bindsym $mod+Mod1+Shift+w exec ~/.local/bin/change_wallpaper.sh && swaybg -i /home/solenopsis/Pictures/Wallpapers/actual.jpg -m fill
 
 #gaps inner 3
 #gaps outer 2
@@ -112,7 +112,7 @@ hide_edge_borders smart
 
 # class                  border              background          text                indicator           child_border
 client.focused           #0D1A63CC           #0D1A63CC           #ffffff             #0D1A63FF           #0D1A63CC
-client.focused_inactive  #0d1640AA           #0d1640AA           #aaaacc             #0d1640AA           #0d1640AA
+client.focused_inactive  #6ebaddFF           #6ebaddCC           #0d1640FF           #6ebaddFF           #6ebaddCC
 client.unfocused         #0d1640AA           #0d1640AA           #666688             #0d1640AA           #0d1640AA
 client.urgent            #c03c3cCC           #c03c3cCC           #ffffff             #c03c3cCC           #c03c3cCC
 

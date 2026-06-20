@@ -64,6 +64,41 @@ with some additions made by me.
 * **Mod + Left/Right/Up/Down** Move focus of the window
 * **Mod + Shift + Left/Right/Up/Down** Move the focused window in the workspace
 
+## Window groups
+
+Groups are native containers: split, then turn the split into a tabbed group.
+The bindings below (see `config.d/groups`) add naming and a recovery shortcut.
+
+* **Mod + B / Mod + V** Split horizontally / vertically (next window opens there)
+* **Mod + W** Turn the current split into a tabbed group
+* **Mod + A** Select the parent group (so actions apply to the whole group)
+* **Mod + Shift + M** Name / rename the focused group (prompts via wofi). The
+  name is shown as `[name]` in the title bar (`show_marks yes`). Select the
+  group with **Mod + A** first so the name lands on the group, not one window.
+* **Mod + Alt + M** Remove the name from the focused group
+* **Mod + Shift + W** Flatten the focused workspace into a single tabbed level
+  (dissolves all nested groups — use it when you get lost). Runs
+  `scripts/flatten_workspace.sh`.
+
+**Visual cue (container you are inside):** `client.focused_inactive` is set to
+light blue `#6ebadd`, so the tab of the **active container** (the parent group
+holding the focused window, e.g. the `T[...]` tab) stands out from the dark-blue
+theme. You can tell which group you are inside, not just which window.
+
+**Telling containers from plain windows (always):** sway cannot colour a
+container's tab differently from a window's tab — both share the `unfocused`
+class once they lose focus, and `title_format` only applies to real windows, not
+containers. The reliable, always-on distinction is sway's native prefix: a
+container tab is shown as `T[...]` (tabbed), `S[...]` (stacking) or `V[...]` /
+`H[...]` (split), whereas a plain window shows its raw title. So a navy tab that
+reads `T[...]` is a container; a navy tab with a normal title is a single window.
+
+Note: `focused_inactive` is also used for the last-active tab of any other
+non-focused container on the workspace, so those tabs turn light blue too.
+
+**Note:** changing the wallpaper moved from `Mod + Shift + W` to
+**Mod + Alt + Shift + W** to free the shortcut for the flatten action.
+
 ## Multimedia/system keys
 
 **NOTE**: The sound bindings expect to have at least one analog output, which
