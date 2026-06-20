@@ -111,9 +111,9 @@ default_floating_border pixel 2
 hide_edge_borders smart
 
 # class                  border              background          text                indicator           child_border
-client.focused           #0D1A63CC           #0D1A63CC           #ffffff             #0D1A63FF           #0D1A63CC
+client.focused           #0D1A63CC           #0D1A63CC           #d9a9a1             #0D1A63FF           #0D1A63CC
 client.focused_inactive  #6ebaddFF           #6ebaddCC           #0d1640FF           #6ebaddFF           #6ebaddCC
-client.unfocused         #0d1640AA           #0d1640AA           #666688             #0d1640AA           #0d1640AA
+client.unfocused         #0d1640AA           #0d1640AA           #bad9a1             #0d1640AA           #0d1640AA
 client.urgent            #c03c3cCC           #c03c3cCC           #ffffff             #c03c3cCC           #c03c3cCC
 
 # Title bar (tab/stack header): same blue accent, semi-transparent
